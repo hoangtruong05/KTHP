@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm xâu</title>
+</head>
+<body>
+    <form>
+        <table border="2">
+            <tr>
+                <td colspan="2" style="text-align: center;"><h3>Kiểm tra xâu</h3></td>
+            </tr>
+            <tr>
+                <td><b>Nhập xâu:</b></td>
+                <td><input type="text" id="xau" required style="width: 200px;"></td>
+            </tr>
+            <tr>
+                <td><b>Nhập từ:</b></td>
+                <td><input type="text" id="tu" required style="width: 200px;"></td>
+            </tr>
+            <tr>
+                <td><b>Thông báo kết quả:</b></td>
+                <td><textarea id="kq" readonly style="width: 200px; height: 60px;"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="button" value="Tìm kiếm" onclick="timXau()">
+                    <input type="reset" value="Xóa">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function timXau(){
+            let xau = document.getElementById('xau').value.trim();
+            let tu = document.getElementById('tu').value.trim();
+
+            if(xau === '' || tu === ''){
+                alert('Vui lòng nhập đầy đủ thông tin!');
+                return;
+            }
+
+            let viTri = [];
+            let pos = xau.indexOf(tu);
+
+            while(pos !=-1){
+                viTri.push(pos);
+                pos = xau.indexOf(tu, pos+1);
+            }
+
+            //Hiển thi kết quả
+
+            if(viTri.length >0){
+                document.getElementById('kq').value = `Từ ${tu} có xuất hiện trong xâu ở vị trí: ${viTri.join(',')}`;
+            }
+            else{
+                document.getElementById('kq').value = `Từ ${tu} không xuất hiện trong xâu`;
+            }
+        }
+
+    </script>
+</body>
+</html>

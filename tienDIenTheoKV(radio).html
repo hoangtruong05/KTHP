@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tiền điện theo khu vực</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        table{
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 5px;
+        }
+        .kq{
+            background-color: rgb(101, 255, 104);
+            color: white;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td colspan="2"><h3>TÍNH TIỀN ĐIỆN THEO KHU VỰC</h3></td>
+            </tr>
+            <tr>
+                <td>Họ tên khách hàng:</td>
+                <td>
+                    <input type="text" id="ten" required >
+                </td>
+            </tr>
+            <tr>
+                <td>Số điện (kWh):</td>
+                <td>
+                    <input type="number" id="soDien" required onchange="kiemTra('soDien')">
+                </td>
+            </tr>
+            <tr>
+                <td>Chọn khu vực:</td>
+                <td>
+                    <input type="radio" name="kv" value="HN"> Hà Nội <br>
+                    <input type="radio" name="kv" value="HCM"> Hồ Chí Minh <br>
+                    <input type="radio" name="kv" value="HY"> Hưng Yên
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <br>
+                    <input type="button" value="Tính tiền" onclick="tinhTien()">
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="kq">
+                    <p id="ketQua"></p>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        // Kiểm tra đầu vào số điện
+        function kiemTra(id){
+            let num = parseInt(document.getElementById(id).value);
+            if(num < 1 || isNaN(num)){
+                alert('Vui lòng nhập lại số điện nguyên dương (>=1)');
+                document.getElementById(id).value = '';
+                document.getElementById(id).focus();
+                return false;
+            }
+            return true;
+        }
+
+        function tinhTien(){
+            let name = document.getElementById('ten').value.trim();
+            let soDien = parseInt(document.getElementById('soDien').value);
+            let kvInput = document.querySelector('input[name="kv"]:checked');
+            let donGia = 0;
+
+            // Kiểm tra dữ liệu
+            if(name === ''){
+                alert('Vui lòng nhập họ tên khách hàng');
+                document.getElementById('ten').focus();
+                return;
+            }
+            if(!kiemTra('soDien')){
+                return;
+            }
+            if(kvInput === null){
+                alert('Vui lòng chọn khu vực');
+                return;
+            }
+
+            // Lấy giá trị khu vực
+            let kv = kvInput.value;
+
+            // Xác định đơn giá
+            switch(kv){
+                case "HN": donGia = 2000; break;
+                case "HCM": donGia = 2500; break;
+                case "HY": donGia = 1800; break;
+            }
+
+            let thanhTien = soDien * donGia;
+
+            // Giảm 5% nếu dùng > 100kWh
+            if (soDien > 100) {
+                thanhTien *= 0.95;
+            }
+
+            // Hiển thị kết quả ra màn hình
+            document.getElementById('ketQua').innerHTML = `
+                - Khách hàng: ${name} <br>
+                - Khu vực: ${kv == "HN" ? "Hà Nội" : kv == "HCM" ? "Hồ Chí Minh" : "Hưng Yên"} <br>
+                - Số điện: ${soDien} kWh<br>
+                - Thành tiền: ${thanhTien.toLocaleString()} VNĐ
+            `;
+        } 
+    </script>
+</body>
+</html>

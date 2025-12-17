@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm từ dài nhất</title>
+</head>
+<body>
+    <form>
+        <table border="2">
+            <tr>
+                <td colspan="2" style="text-align: center;"><h3>Tìm từ dài nhất</h3></td>
+            </tr>
+            <tr>
+                <td><b>Nhập xâu:</b></td>
+                <td><input type="text" id="xau" required style="width: 200px;"></td>
+            </tr>
+            <tr>
+                <td><b>Thông báo kết quả:</b></td>
+                <td>
+                    <p id="kq" style="width: 200px; height: 60px; background: #f0f0f0; padding: 5px;"></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <br>
+                    <input type="reset" value="Xóa" onclick="document.getElementById('kq').innerHTML = ' '">
+                    <input type="button" value="Tìm kiếm" onclick="timKiem()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function timKiem() {
+            let xau = document.getElementById('xau').value.trim();
+
+            if (xau === '') {
+                alert('Vui lòng nhập xâu!');
+                document.getElementById('xau').focus();
+                return;
+            }
+
+            let tuArr = xau.split(' ');
+            let tuDaiNhat = tuArr[0];
+            let viTri = xau.indexOf(tuDaiNhat);
+
+            for (let i = 1; i < tuArr.length; i++) {
+                if (tuArr[i].length > tuDaiNhat.length) {
+                    tuDaiNhat = tuArr[i];
+                    viTri = xau.indexOf(tuDaiNhat);
+                }
+            }
+
+            // Dùng innerHTML để hiển thị kết quả có in đậm
+            document.getElementById('kq').innerHTML = 
+                `Từ dài nhất là <b>${tuDaiNhat}</b> xuất hiện ở vị trí <b>${viTri}</b>`;
+        }
+    </script>
+</body>
+</html>

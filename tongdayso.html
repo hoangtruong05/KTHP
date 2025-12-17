@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tổng dãy số</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        table{
+            padding: 2px;
+        }
+        .btn{
+            text-align: center;
+        }
+        h3{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <table border="2">
+            <tr>
+                <td colspan="2"><h3>Tính tổng dãy số</h3></td>
+            </tr>
+            <tr>
+                <td>Nhập dãy số</td>
+                <td>
+                    <input id="daySo" type="text" placeholder="ví dụ: 1,2,3,4,5" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Tính tổng dãy số</td>
+                <td>
+                    <input id="result" type="text" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="btn" colspan="2">
+                    <input type="button" value="Tính Tổng" id="btnCalc" onclick="tinhTong()">
+                    <input type="reset" value="Hủy" id="btnCancle">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function tinhTong(){
+            let daySo = document.getElementById('daySo').value;
+            let arr = daySo.split(",").map(Number);
+            let tong = 0;
+
+            for(let i = 0; i< arr.length; i++){
+                if( i % 2 !=0){
+                    tong += arr[i];
+                }
+            }
+            document.getElementById('result').value = tong;
+        }
+    </script>
+</body>
+</html>

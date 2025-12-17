@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính lương nhân viên</title>
+</head>
+<body>
+    <form action="">
+        <table border="2">
+            <tr>
+                <td colspan="2" style="text-align: center;"><h3>TÍNH LƯƠNG NHÂN VIÊN 2023</h3></td>
+            </tr>
+            <tr>
+                <td>Tên nhân viên</td>
+                <td>
+                    <input type="text" id="ten" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Ngày công</td>
+                <td>
+                    <input type="number" id="ngayCong" required onchange="kiemTra('ngayCong')">
+                </td>
+            </tr>
+            <tr>
+                <td>Lương ngày</td>
+                <td>
+                    <input type="number" id="luongNgay" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Lương tháng</td>
+                <td>
+                    <input type="number" id="luongThang" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Xếp loại nhân viên</td>
+                <td>
+                    <input type="text" id="xepLoai" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Thưởng</td>
+                <td>
+                    <input type="number" id="thuong" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Thực lĩnh</td>
+                <td>
+                    <input type="text" id="thucLinh" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="button" value="Tính lương" onclick="tinh()">
+                    <input type="reset" value="Xóa">
+                </td>
+            </tr>
+        </table>
+    </form> 
+
+    <script>
+        function kiemTra(id){
+            let n = parseInt(document.getElementById(id).value);
+
+            if(n<1 || n>30 || isNaN(n)){
+                alert('Nhập số ngày công nguyên dương trong khoảng 1-30');
+                document.getElementById('ngayCong').value = '';
+                document.getElementById('ngayCong').focus();
+                return false;
+            }
+            return true;
+        }
+        function tinh(){
+            let ten = document.getElementById('ten').value;
+            let ngayCong = parseInt(document.getElementById('ngayCong').value);
+            let lgNgay = 160000;
+            document.getElementById('luongNgay').value = lgNgay;
+            let lgThang = lgNgay * ngayCong;
+            document.getElementById('luongThang').value = lgThang;
+            let xepLoai = document.getElementById('xepLoai').value;
+            let thuong = document.getElementById('thuong').value;
+            let thucLinh = document.getElementById('thucLinh').value;
+
+            //Kiểm tra điều kiện
+            if(ten===''){
+                alert('Vui lòng nhập tên nhân viên!');
+                document.getElementById('ten').value = '';
+                document.getElementById('ten').focus();
+            }
+            //  if(!kiemTra('ngayCong')){
+            //     alert('Vui lòng lại số ngày công!');
+            //     document.getElementById('ngayCong').value = '';
+            //     document.getElementById('ngayCong').focus();
+            // }
+            
+            //Xếp loại nhân viên
+            if(ngayCong >25){
+                xepLoai = "A";
+            }
+            else if(ngayCong >=20){
+                xepLoai = "B";
+            }
+            else{
+                xepLoai = "B";
+            }
+            document.getElementById('xepLoai').value = xepLoai;
+
+            //Thưởng
+            switch(xepLoai){
+                case "A": thuong = 500000; break;
+                case "B": thuong = 300000; break;
+                case "C": thuong = 0; break;
+            }
+            document.getElementById('thuong').value = thuong.toLocaleString();
+            thucLinh = lgThang + thuong;
+            document.getElementById('thucLinh').value = thucLinh.toLocaleString();
+        }
+    </script>
+</body>
+</html>
