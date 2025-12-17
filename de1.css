@@ -1,0 +1,117 @@
+
+.header-phantren{
+    height: 140px;
+    background-image: url(background-header-de1.jpg);
+    background-size: cover; /*để ảnh phủ hết header */
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.logo{
+    position: absolute; 
+    left: 0px; 
+    height: 140px;
+    width: 150px;
+}
+.header-text{
+    text-align: center;
+}
+
+.company-name {
+    color: #0033CC; 
+    font-size: 24px; /* Kích thước chữ (có thể điều chỉnh) */
+    margin: 0; /* Loại bỏ margin mặc định */
+}
+
+.company-address {
+    color: #000000; 
+    margin-top: 15px; 
+}
+.menu-header ul{
+    display: flex;
+    list-style: none;
+    margin: 0; 
+    padding: 0;
+    width: 100%;
+}
+.menu-header ul li{
+    flex-grow: 1;
+    padding: 10px;
+    padding-inline: 60px;
+    border-right: 1px solid white;
+    background-color: #33CCFF;
+}
+.menu-header ul li a{
+    color:white;
+    text-decoration: none;
+}
+.menu-header ul li:hover{
+    background-color: rgb(55, 85, 10);
+}
+.menu-header ul> li:hover > a {
+    color: yellow; /* Chữ chuyển màu vàng */
+}
+.menu>ul>li{
+    list-style: none;
+    background-color: #33a0ff ;
+    color: white;
+    padding: 20px;
+    border: 1px solid gray;
+    width: 200px;
+    position: relative;
+}
+.submenu{
+    display:none;
+    position: absolute;
+}
+.submenu>li{
+    list-style: none;
+    background-color: #33a0ff ;
+    color: white;
+    padding: 20px;
+    border: 1px solid gray;
+    width: 200px;
+}
+.menu>ul>li:hover{
+    color: yellow;
+}
+.menu>ul>li:hover .submenu{
+    display: block;
+    left: 200px;
+    top: 0px;
+}
+section{
+    display: flex;
+    gap: 20px;
+}
+.content-title{
+    padding: 10px;
+    color: white;
+    background-color: #395fd2;
+}
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+.product-item {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Thêm hiệu ứng chuyển đổi mượt mà cho phóng to */
+    transition: transform 0.3s ease; 
+}
+.product-item:hover .product-image{
+    transform: scale(1.1);
+    overflow: hidden;
+}
+.product-item:hover .product-name {
+    color: red; /* Chữ chuyển sang màu đỏ */
+}

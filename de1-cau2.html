@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>câu 2</title>
+    <style>
+        table{
+            background-color: rgb(127, 212, 255);
+            margin: auto;
+            width: 400px;
+        }
+        input{
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th colspan="2">Sắp xếp câu theo quy luật</th>
+        </tr>
+        <tr>
+            <td>Nhập câu ban đầu:</td>
+            <td><input type="text" id="nhapCau"></td>
+        </tr>
+        <tr>
+            <td>Câu sau khi sắp lại</td>
+            <td><input type="text" id="sapCau" readonly></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button onclick="xoa()">Xoá</button>
+                <button onclick="saplai()">Sắp lại</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function xoa(){
+            document.getElementById("nhapCau").value="";
+            document.getElementById("sapCau").value="";
+        }
+        function saplai(){
+            let cau=document.getElementById("nhapCau").value.trim(); 
+            // trim dùng để xoá khoảng cách
+
+            if(cau ==""){
+                alert("Vui lòng nhập câu");
+                return;
+            }
+            let tu = cau.split(/\s+/);
+            //   \s : khoảng trắng
+            // (bao gồm: dấu cách, tab, xuống dòng…)
+            // + : 1 hoặc nhiều lần
+            // / / : ký hiệu bao quanh biểu thức chính quy
+            if(tu.length>20){
+                alert("Nhập câu có < 20 từ");
+                return;
+            }
+            //ktra số kí tự mỗi từ
+            for (let kitu of tu) {
+            if (kitu.length > 10) {
+                alert("Mỗi từ không được quá 10 ký tự!");
+                return;
+            }
+            }
+            tu.sort();
+            document.getElementById("sapCau").value= tu.join(" ");   
+        }
+    </script>
+</body>
+</html>
