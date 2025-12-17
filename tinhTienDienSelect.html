@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tiền điện </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100dvh;
+        }
+        table{
+            background-color: rgb(152, 204, 255);
+            padding: 5px;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <table> 
+            <tr>
+                <th colspan="2"><h3 style="margin: 5px;">Tính tiền điện theo khu vực</h3></th>
+            </tr>
+            <tr>
+                <td>Họ tên khách hàng: </td>
+                <td>
+                    <input type="text" name="ten" id="ten" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Số điện: </td>
+                <td>
+                    <input type="number" name="" id="soDien" onchange="kiemTra('soDien')">
+                </td>
+            </tr>
+            <tr>
+                <td>Chọn khu vực</td>
+                <td>
+                    <select name="" id="kv">
+                        <option value="" selected hidden>--Chọn khu vực--</option>
+                        <option value="HN">Hà Nội</option>
+                        <option value="HCM">Hồ Chí Minh</option>
+                        <option value="HY">Hưng Yên</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Kết quả: </td>
+                <td>
+                    <input style="color: red;" type="text" name="" id="ketQua" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                
+                    <input style="background-color: red; color: whitesmoke;border: 0;font-size: 18px; padding: 5px; border-radius: 10%;margin: 10px;" type="button" value="Tính tiền" onclick="tinhTien()">
+                  
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p id="kq"></p>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function kiemTra(id){
+            let num = parseInt(document.getElementById(id).value);
+            if(num<1 || isNaN(num)){
+                alert('Vui long nhap so dien hop le(so nguyen duong)');
+                document.getElementById(id).value=' ';
+                document.getElementById(id).focus();
+                return false;
+            }
+            return true;
+        }
+        function tinhTien(){
+            let name = document.getElementById('ten').value;
+            let soDien = parseInt(document.getElementById('soDien').value);
+            let kv = document.getElementById('kv').value;
+            let donGia = 0;
+            //Kiem tra truoc khi tinh
+
+            if(name === '' || !kiemTra('soDien') || kv ===''){
+                alert('Vui long nhap day du thong tin!');
+                return;
+            }
+
+            switch(kv){
+                case 'HN': donGia = 2000; break;
+                case 'HCM': donGia = 3000; break;
+                case 'HY': donGia = 1800; break;
+            }
+            let thanhTien = donGia * soDien;
+            if(soDien >100){
+                thanhTien = thanhTien*0.95;
+            }
+            document.getElementById('ketQua').value=thanhTien.toLocaleString();
+            //Hiển thị kết quả
+            document.getElementById('kq').innerHTML=`
+            - Tên khách hàng: ${name} <br>
+            - Số điện: ${soDien} kwh <br>
+            - Khu vực: ${kv == "HN" ? "Hà Nội": kv == "HCM" ? "Hồ Chí Minh":"Hưng Yên"}<br>
+            - Số tiền: ${thanhTien.toLocaleString()}VNĐ`
+
+        }
+    </script>
+</body>
+</html>

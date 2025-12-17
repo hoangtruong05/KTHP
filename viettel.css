@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(109, 179, 250);
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+}
+.tieuDe{
+    text-align: center;
+    color: whitesmoke;
+}
+fieldset{
+    color: whitesmoke;
+}
+nav{
+    margin: 0px 50px;
+    display: flex;
+    border: 0.5px solid whitesmoke;
+    background-color: rgb(147, 200, 252);
+}
+.menu ul{
+    display: flex;
+}
+.menu ul li{
+    list-style: none;
+    padding: 0px 40px;
+    position: relative;
+}
+.menu ul li > a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: bold;
+    padding: 10px 10px;
+    display: block;
+}
+.menu ul li:hover a{
+    background-color:bisque;
+    color: darkolivegreen;
+}
+/* Menu con */
+.menu li ul{
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    width: 197px;
+}
+.menu li ul li{
+    border-top: 0.2px solid rgb(155, 155, 155);
+}
+.menu li:hover ul{
+    display: block;
+}
+.menu li ul li:hover a{
+    background-color: chocolate;
+    color: whitesmoke;
+}
+.search{
+    padding: 10px;
+}
+section{
+    margin: 0px 50px;
+}
+.product{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    margin: 20px 0px;
+}
+.product1{
+    display: flex;
+    border: 0.5px solid whitesmoke;
+    transition: transform 0.4s ease;
+}
+.moTa{
+    padding: 10px;
+    color: whitesmoke;
+}
+.product1:hover{
+    box-shadow: 0px 0px 10px rgb(135, 135, 135);
+    transform: scale(1.2);
+}
+footer{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    background-color: rgba(1, 23, 63, 0.441);
+    color: whitesmoke;
+}
+.cs{
+    padding: 5px 50px;
+}
+.cs li{
+    list-style: none;
+    padding: 10px 0px 0px 0px ;
+}
+.cs li a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.end{
+    text-align: right;
+}
