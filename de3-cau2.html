@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu 2 đề 3</title>
+    <style>
+        .form-box{
+            width:400px;
+            margin:30px auto;
+            background:#fff;
+            padding:20px;
+            border:1px solid #ddd;
+        }
+        .form-box input{ width:100%; padding:5px; margin-bottom:10px; }
+        .form-box button{ padding:5px 10px; }
+        
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h3>Nhập họ và tên</h3>
+        <input type="text" id="hoten" placeholder="Họ và tên">
+        <input type="text" id="ten" placeholder="Tên">
+        <input type="text" id="ketqua" placeholder="Chuan hoa" readonly>
+        <button onclick="hienthi()">Hiển thị</button>
+        <button onclick="huy()">Hủy bỏ</button>
+    </div>
+    <script>
+        function hienthi(){
+            let hoten= document.getElementById("hoten").value.trim();
+             
+            if(hoten==""){
+                alert("Vui lòng nhập họ và tên1")
+                return;
+            }
+            let tu = hoten.split(/\s+/);
+
+            for( let i; i<tu.length; i++){
+                tu[i] =tu[i].charAt(0).toUpperCase() + tu[i].slice(1).toLowerCase();
+            }
+            document.getElementById("ketqua").value = tu.join("");
+        }
+        
+        function huy(){
+        document.getElementById("hoTen").value="";
+        document.getElementById("ten").value="";
+        document.getElementById("ketqua").value="";
+        }
+        </script>
+        
+</body>
+</html>

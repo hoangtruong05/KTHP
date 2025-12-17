@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+header{
+    background-color: rgb(97, 130, 97);
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+header>img{
+    width: 15%;
+}
+.tenTruong{
+    align-content: center;
+    margin: 0 auto;
+    display: block;
+}
+.menu{
+    width: 100%;
+    background-color:rgb(51, 69, 51) ;
+}
+.menu>ul{
+    list-style: none;
+    display: flex;
+}
+.menu>ul>li{
+    flex:1;
+    padding: 10px;
+    border: 1px solid gray;
+    text-align: center;
+    position: relative;
+}
+.menu>ul>li>a{
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+.dki{
+    float: right;
+    margin-top: 5px;
+    padding: 5px;
+}
+.dki>a{
+    background-color: rgb(152, 235, 213);
+    padding: 5px;
+    border: 1px solid gray;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+.dskhoa{
+    padding: 20px;
+    height: fit-content;
+    background-color: rgb(176, 220, 176);
+    text-align: center;
+}
+.dskhoa>h3{
+    width: 200px;
+}
+.dskhoa>ol{
+    width: 150px;
+}
+.dskhoa>ol>li{
+    width: 150px;
+    padding: 5px;
+}
+.tin-tuc{
+    display: flex;
+}
+.tin-tuc>img{
+    width: 20%;
+}
+.wrapped{
+    display: flex;
+    margin-top: 50px;
+}
+.it-support{
+    border: 1px solid black;
+    width: 200px;
+}
+.sidebar{
+    display: block;
+    text-align: center;
+}
+footer{
+    background-color: rgb(69, 87, 65);
+    color: white;
+    position: fixed;
+    bottom:0px;
+    width: 100%;
+    text-align: center;
+}
+.submenu{
+    display: none;
+    list-style: none;
+    position: absolute;
+}
+.submenu>li{
+    padding: 10px;
+    width: 265px;
+    color: white;
+    border: 1px solid gray;
+    text-align: center;
+}
+.menu>ul>li:hover .submenu{
+    display: block;
+    background-color:rgb(51, 69, 51) ;
+    top: 100%;
+    left: 0px;
+}
+.menu>ul>li:hover{
+    background-color: rgb(145, 195, 145);
+}
+.submenu li:hover{
+    background-color: rgb(145, 195, 145);
+}

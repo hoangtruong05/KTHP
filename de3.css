@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.logo{
+    width: 120px;
+}
+.header-top{
+    display: flex;
+    background-color: antiquewhite;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+.giohang>img{
+    width: 50px;
+    height:50px;
+}
+.giohang{
+    display: flex;
+}
+header{
+    display: block;
+}
+.header-bottom{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(247, 156, 214);
+    align-items: center;
+}
+nav a{
+    text-decoration: none;
+    color: white
+}
+nav p{
+    justify-content: center;
+    padding: 10px;
+    border-right:1px solid rgb(193, 136, 136) ;
+}
+nav{
+    display: flex;
+}
+nav p:hover{
+    background-color:rgb(243, 187, 222) ;
+}
+section{
+    display: flex;
+}
+.menu{
+    width: 200px;
+    margin: 10px;
+    margin-inline: 50px;
+}
+.menu h3{
+    padding: 5px ;
+    border: 1px solid #999999;
+}
+.menu ul{
+    list-style: none;
+}
+.menu ul li{
+    border: 1px solid #999999;
+    padding: 10px;
+    position: relative;
+}
+.submenu{
+    display: none;
+    background-color: white;
+    position: absolute;
+}
+.submenu a{
+    text-decoration: none;
+    color: black;
+}
+.menu ul li:hover{
+    background-color: antiquewhite;
+}
+.menu ul li:hover .submenu{
+    display: block;
+    left: 100%;
+    top: 0;
+}
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 50px;
+    margin: 10px;
+}
+.item{
+    box-shadow: 1px 1px 1px gray;
+    display: flex;
+    width: 500px;
+}
+.item>*{
+    padding: 3px;
+}
+.price{
+    display: flex;
+    gap: 10px;
+}
+.item-detail>*{
+    padding: 10px;
+}
+.item-detail button:hover{
+    background-color: pink;
+    color: white;
+}
+.banner{
+    display: flex;
+    gap: 30px;
+    margin: 10px;
+}
+.banner-detail{
+    padding: 10px;
+    background-color: pink;
+    display: flex;
+    gap: 10px;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu 2</title>
+    <style>
+        table{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <th colspan="2">Tính lương nhân viên</th>
+        </tr>
+        <tr>
+            <td>Tên nhân viên:</td>
+            <td><input type="text" id="tennv"></td>
+        </tr>
+        <tr>
+            <td>Ngày công:</td>
+            <td><input type="number" id="ngaycong"></td>
+        </tr>
+        <tr>
+            <td>Lương ngày:</td>
+            <td><input type="text" id="luongngay" readonly></td>
+        </tr>
+        <tr>
+            <td>Lương tháng:</td>
+            <td><input type="text" id="luongthang" readonly></td>
+        </tr>
+        <tr>
+            <td>Xếp loại nhân viên:</td>
+            <td><input type="text" id="xeploai" readonly></td>
+        </tr>
+        <tr>
+            <td>Thưởng:</td>
+            <td><input type="text" id="thuong" readonly></td>
+        </tr>
+        <tr>
+            <td>Thực lĩnh:</td>
+            <td><input type="text" id="thuclinh" readonly></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button onclick="tinh()">Tính tiền</button>
+                <button onclick="xoa()">Xoá</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function tinh(){
+            let ngaycong=Number(document.getElementById("ngaycong").value); //chuyen ngay cong sang kieu so vi value luon tra ve dang string
+            if(ngaycong<=0){
+                alert("Nhập ngày công hợp lệ!");
+                return;
+            }
+            let luongngay=8*20000;
+            let luongthang=ngaycong*luongngay;
+            let thuong=0;
+            let xeploai="";
+            if(ngaycong>25){
+                xeploai="A";
+                thuong=500000;
+            }else if(ngaycong>=20){
+                xeploai="B";
+                thuong=300000;
+            }else{
+                xeploai="C";
+                thuong=0;
+            }
+            let thuclinh=luongthang+thuong;
+            document.getElementById("luongngay").value=luongngay;
+            document.getElementById("luongthang").value=luongthang;
+            document.getElementById("xeploai").value=xeploai;
+            document.getElementById("thuong").value=thuong;
+            document.getElementById("thuclinh").value=thuclinh;
+
+        }
+        function xoa() {
+        document.getElementById("ten").value = "";
+        document.getElementById("ngaycong").value = "";
+        document.getElementById("luongngay").value = "";
+        document.getElementById("luongthang").value = "";
+        document.getElementById("xeploai").value = "";
+        document.getElementById("thuong").value = "";
+        document.getElementById("thuclinh").value = "";
+    }
+    </script>
+</body>
+</html>
